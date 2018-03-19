@@ -1,0 +1,49 @@
+﻿@model PagedList.IPagedList<VikingCompASP_Domain.Entities.News>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="padding: 0px; background-color: #444444;">
+    <div style="min-height: 250px; background-image: url(../../Image/Header.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    </div>
+    <div style="text-align: center; padding: 5px; color: #ffffff; text-transform: capitalize; text-shadow: 2px 2px 4px #000">
+        <strong>VikingComp Computer Hardware and Stationery</strong>
+    </div>
+</div>
+
+
+@if (User.IsInRole("admin"))
+{
+<p>
+    @Html.ActionLink("+ Add New", "NewsCreate", "HomeAdmin")
+</p>
+}
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-new-outer">
+            <div class="col-new-inner">
+                <h2>@Html.DisplayFor(modelItem => item.Head)</h2> 
+                <p>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </p>
+                <p><i>@Html.DisplayFor(modelItem => item.Date)</i></p>
+                <p>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Edit", "NewsEdit", "HomeAdmin", new { id = item.Id }, new { })
+                        <span> | </span> @Html.ActionLink("Delete", "NewsDelete", "HomeAdmin", new { id = item.Id }, new { })
+                        <span> | </span>
+                    }
+                    @Html.ActionLink("Details", "NewsDetails", new { id = item.Id })
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,73 @@
+﻿@model PagedList.IPagedList<VikingCompASP_Domain.Entities.Product>
+@using PagedList.Mvc
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    @if (User.IsInRole("admin"))
+    {
+        <p>
+            @Html.ActionLink("+ Add Product", "ProdCreate", "HomeAdmin")<br />
+            @Html.ActionLink("+ Add Product Category", "ProdCatCreate", "HomeAdmin")
+        </p>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-prod-outer">
+                <div class="col-prod-inner">
+                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Description) <br />
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.ProdCategory.Name)
+                        @Html.DisplayFor(modelItem => item.ProdCategory.Name)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Quantity)
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Price_Net)
+                        @Html.DisplayFor(modelItem => item.Price_Net)
+                    </div>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Edit", "ProdEdit", "HomeAdmin", new { id = item.Id }, new { })
+                        <span> | </span> @Html.ActionLink("Delete", "ProdDelete", "HomeAdmin", new { id = item.Id }, new { })
+                        <span> | </span>
+                    }
+                    @Html.ActionLink("Details", "ProdDetails", new { id = item.Id })
+                    @if (item.Quantity > 0)
+                    {
+                        <span> | </span> @Html.ActionLink("Order", "Create", "Order", new { prodId = item.Id }, new { })
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Products", new { page }))
+</div>

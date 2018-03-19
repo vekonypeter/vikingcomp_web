@@ -1,0 +1,80 @@
+﻿@model VikingCompASP_Domain.Entities.Product
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CategoryId)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CategoryId)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Quantity)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price_Net)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Price_Net)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "ProdEdit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to product management", "ProdIndex")
+    </p>
+</div>

@@ -1,0 +1,79 @@
+﻿@model VikingCompASP_Domain.Repository.OrderOverviewVM
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnPaidCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InCompCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalIncome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalClaim)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalQuantity)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.OrderCnt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.UnPaidCnt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.InCompCnt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TotalIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TotalClaim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.TotalQuantity)
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to order management", "OrderIndex")
+    </p>
+</div>

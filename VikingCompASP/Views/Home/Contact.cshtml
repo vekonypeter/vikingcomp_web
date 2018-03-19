@@ -1,0 +1,30 @@
+﻿@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-cont-outer">
+            <div class="col-cont-inner">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1336.4650500779594!2d22.651602658285295!3d47.93773579171589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47386d3d514d3385%3A0xb7d3d53943bddb21!2zVmlraW5nQ29tcCBTesOhbcOtdMOhc3RlY2huaWthaSBTemFrw7x6bGV0IMOpcyBTemVydsOteg!5e0!3m2!1shu!2shu!4v1459678859547"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

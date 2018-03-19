@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<VikingCompASP_Domain.Entities.Order>
+@using PagedList.Mvc;
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-prod-outer">
+                <div class="col-prod-inner">
+                    <h4>@Html.DisplayFor(modelItem => item.Product.Name)</h4>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Product.Description) <br />
+                        @Html.DisplayFor(modelItem => item.Product.Description)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Product.Quantity)
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Product.Price_Net)
+                        @Html.DisplayFor(modelItem => item.Product.Price_Net)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Paid)
+                        @Html.DisplayFor(modelItem => item.Paid)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Completed)
+                        @Html.DisplayFor(modelItem => item.Completed)
+                    </div>
+                    <div>
+                        @Html.LabelFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </div>
+                    @if (!item.Paid)
+                    {
+                        @Html.ActionLink("Pay this order", "Pay", new { oId = item.Id }) <span>|</span>
+                    }
+                    @Html.ActionLink("Details", "Details", new { oId = item.Id })
+                </div>
+            </div>
+        }
+    </div>
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+</div>

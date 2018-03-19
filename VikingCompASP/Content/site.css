@@ -1,0 +1,96 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#vikinglogo {
+    height: 45px;
+    float: left;
+    margin-top: 3px;
+}
+
+.col-open {
+    line-height: 1.75;
+    margin-top: -20px;
+}
+
+.jumbo-viking {
+    font-size: medium;
+}
+
+.col-prod-inner {
+    border: 2px solid #eb0000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 5px 15px;
+    margin-bottom: 5px;
+}
+
+.col-new-inner {
+    border: 2px solid #494949;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 5px 15px;
+    margin-bottom: 5px;
+}
+
+.col-admin-inner {
+    border: 2px dashed #eb0000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    margin-bottom: 5px;
+}
+
+.col-cont-inner {
+    border: 2px solid #eb0000;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.col-cont-inner > iframe {
+    width: 100%;
+    min-height: 250px;
+    border: 0px;
+    margin: 0px;
+}
+
+.col-cont-outer {
+    margin-bottom: 10px;
+}
+
+.col-prod-outer {
+    margin-bottom: 10px;
+}
+
+.col-new-outer {
+    margin-bottom: 10px;
+}
+
+.col-admin-outer {
+    margin-bottom: 10px;
+}
+
+.col-admin-inner > table {
+margin-top: 20px;
+}

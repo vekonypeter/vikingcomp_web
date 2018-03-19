@@ -1,0 +1,67 @@
+﻿@model VikingCompASP_Domain.Entities.Product
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-prod-outer">
+            <div class="col-prod-inner">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProdCategory.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProdCategory.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price_Net)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price_Net)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to products", "Products") | @Html.ActionLink("Order", "Create", "Order", new { prodId = Model.Id }, new { })
+    </p>
+</div>

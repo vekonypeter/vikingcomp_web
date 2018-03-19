@@ -1,0 +1,83 @@
+﻿@model IEnumerable<VikingCompASP_Domain.Repository.ProdsInIncOrdersVM>
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProdName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderPaidCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProdCnt)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderPriceSum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderPaidPriceSum)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProdName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderCnt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderPaidCnt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProdCnt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderPriceSum)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderPaidPriceSum)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to product management", "ProdIndex")
+    </p>
+</div>

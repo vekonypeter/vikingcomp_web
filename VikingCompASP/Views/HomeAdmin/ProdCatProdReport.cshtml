@@ -1,0 +1,70 @@
+﻿@model IEnumerable<VikingCompASP_Domain.Repository.ProdsByProdCatVM>
+
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProdCatName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProdCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalQuantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalPrice)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProdCatName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProdCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalQuantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to product cat. management", "ProdCatIndex")
+    </p>
+</div>

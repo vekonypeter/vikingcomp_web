@@ -1,0 +1,87 @@
+﻿@model IEnumerable<VikingCompASP_Domain.Repository.OrdersByUsersVM>
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastOrder)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CompOrderCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PaidOrderCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalPaid)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalDebit)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastOrder)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompOrderCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PaidOrderCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPaid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalDebit)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to user management", "UserIndex")
+    </p>
+</div>

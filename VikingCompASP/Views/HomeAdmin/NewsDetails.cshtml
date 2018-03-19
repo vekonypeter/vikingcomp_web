@@ -1,0 +1,64 @@
+﻿@model VikingCompASP_Domain.Entities.News
+
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Head)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Head)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Body)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Body)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Date)
+                        </dd>
+
+                    </dl>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "NewsEdit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to news management", "NewsIndex")
+    </p>
+</div>

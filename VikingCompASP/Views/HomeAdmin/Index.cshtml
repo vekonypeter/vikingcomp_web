@@ -1,0 +1,41 @@
+﻿@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-admin-outer">
+            <div class="col-admin-inner">
+                <ul>
+
+                    <li>@Html.ActionLink("News", "NewsIndex")</li>
+                    <li>@Html.ActionLink("Products", "ProdIndex")</li>
+                    <li>@Html.ActionLink("Product categories", "ProdCatIndex")</li>
+                    <li>@Html.ActionLink("Orders", "OrderIndex")</li>
+                    <li>@Html.ActionLink("Users", "UserIndex")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back to Index", "Index", "Home")
+    </p>
+</div>

@@ -1,0 +1,74 @@
+﻿@model VikingCompASP_Domain.Entities.Order
+
+@{
+    
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    { 
+    <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info:</strong> @ViewBag.Message
+    </div>
+    }
+        
+    <div class="row">
+        <div class="col-md-12 col-prod-outer">
+            <div class="col-prod-inner">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.HiddenFor(model => model.UserId)
+                        @Html.HiddenFor(model => model.ProductId)
+                        @Html.HiddenFor(model => model.Date)
+                        @Html.HiddenFor(model => model.Paid)
+                        @Html.HiddenFor(model => model.Completed)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Product.Price_Net, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <strong>@Html.DisplayFor(model => model.Product.Price_Net)</strong>
+                            </div>    
+                        </div>               
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @min = 0, @max = Model.Product.Quantity } })
+                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                            </div>                           
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Product.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <strong>@Html.DisplayFor(model => model.Product.Quantity)</strong>
+                            </div>
+                        </div> 
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Order" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @Html.ActionLink("Back to products", "Products", "Home")
+        </div>
+    </div>
+</div>

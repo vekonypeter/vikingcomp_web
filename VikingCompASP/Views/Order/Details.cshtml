@@ -1,0 +1,96 @@
+﻿@model VikingCompASP_Domain.Entities.Order
+
+@{
+
+}
+
+<div class="container body-content">
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Info:</strong> @ViewBag.Message
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12 col-prod-outer">
+            <div class="col-prod-inner">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Product.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Product.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Product.ProdCategory.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Product.ProdCategory.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Product.Price_Net)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Product.Price_Net)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Date)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Paid)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Paid)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Completed)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Completed)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    @if (!Model.Paid)
+    {
+        @Html.ActionLink("Pay this order", "Pay", new { oId = Model.Id }) <span>|</span>
+    }
+    @Html.ActionLink("Back to my orders", "Index") <span>|</span>
+    @Html.ActionLink("Buy more products", "Products", "Home")
+</div>
+
